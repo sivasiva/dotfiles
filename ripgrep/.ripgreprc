@@ -1,0 +1,34 @@
+#
+# REF: https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file
+# Requires `export RIPGREP_CONFIG_PATH=~/.ripgreprc` to work
+# 
+# Don't let ripgrep vomit really long lines to my terminal.
+--max-columns=100
+
+# Add my 'web' type.
+--type-add
+web:*.{html,css,js}*
+
+# Using glob patterns to include/exclude files or folders
+--glob=!git/*
+--glob=!node_modules/*
+--glob=!.cache/*
+--glob=!vendor/*
+
+# Set the colors.
+--colors=line:fg:yellow 
+--colors=line:style:bold
+--colors=match:bg:yellow
+--colors=match:fg:black 
+--colors=match:style:nobold 
+--colors=path:fg:green 
+--colors=path:style:bold 
+
+# Because who cares about case!?
+--smart-case
+
+
+--column
+--line-number
+--no-heading
+

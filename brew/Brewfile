@@ -1,0 +1,101 @@
+# specify a directory to install
+cask_args appdir: '/Applications'
+
+# install packages
+# tap 'caskroom/homebrew-cask' || true
+brew 'asdf'
+brew 'direnv'
+brew 'autojump'
+brew 'gcc'
+brew 'gpg'
+brew 'openssl' 
+brew 'readline' 
+brew 'sqlite3' 
+brew 'stow'
+brew 'tree'
+brew 'wget'
+brew 'xz' 
+brew 'zlib'
+brew 'neovim'
+brew 'tree-sitter'
+brew 'putty'
+brew 'yarn'
+
+# Development
+brew 'git'
+brew 'httpie'
+brew 'jq'
+brew 'sqlc'
+brew 'gnu-sed'
+brew 'lazygit'
+brew 'hygen'
+
+# https://stackoverflow.com/questions/12618232/copy-a-few-of-the-columns-of-a-csv-file-into-a-table/49906327#49906327
+# https://miller.readthedocs.io/en/latest/installing-miller/
+brew 'miller'
+
+# Search
+brew 'ripgrep'
+brew 'fd'
+brew 'fzf'
+brew 'zoxide'
+
+# Terminal
+brew 'starship'
+brew 'tmux'
+brew 'tmuxp'
+brew 'bash-completion'
+brew 'bat'
+brew 'glow' # Markdown preview engine for the terminal
+
+# K8S
+# brew 'minikube'
+# brew 'kubectx'
+# brew 'kind'
+# brew 'helm'
+# brew 'terraform'
+# brew 'skaffold'
+# brew 'lima'
+
+# Golang
+brew 'golangci-lint'
+
+# nvim Formatting & Linting
+brew 'stylua'
+brew 'efm-langserver'
+brew 'pgformatter'
+
+brew 'hashicorp/tap/nomad'
+brew 'hashicorp/tap/packer'
+
+# Data
+brew 'benthos'
+
+# Infra
+brew 'ansible'
+brew 'ansible-lint'
+# Fonts
+tap 'homebrew/cask-fonts'
+# cask 'font-hack-nerd-font'
+# cask 'font-inconsolata-nerd-font'
+
+# Taps
+tap 'hashicorp/tap'
+
+
+# Casks
+# cask 'google-chrome'
+# cask 'dropbox'
+# cask 'alfred'
+# cask 'evernote'
+# cask 'flux'
+# cask 'skype'
+# cask 'virtualbox'
+# cask 'slack'
+# cask 'spotify'
+# cask 'kindle'
+# cask '1password'
+# cask 'iterm2'
+# cask 'calibre'
+# cask 'dash'
+

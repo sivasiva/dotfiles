@@ -1,0 +1,7 @@
+// Example markdownlint configuration with all properties set to their default value
+{
+  // REF: https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.jsonc
+
+  // Default state for all rules
+  "default": false
+}
