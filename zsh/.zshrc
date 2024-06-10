@@ -60,17 +60,17 @@ else
   source ~/.zplug/init.zsh
 fi
 
-# zplug "lib/history",                       from:"oh-my-zsh"
+zplug "lib/history",                       from:"oh-my-zsh"
 # zplug "plugins/autojump",                  from:"oh-my-zsh"
 # zplug "plugins/shrink-path",               from:"oh-my-zsh"
 # zplug "zdharma-continuum/fast-syntax-highlighting",  defer:3
 # zplug "zsh-users/zsh-autosuggestions",     defer:3
-# zplug "zsh-users/zsh-completions",     defer:3
-# # zplug "zsh-users/zsh-history-substring-search" defer:3
+zplug "zsh-users/zsh-completions",     defer:3
+zplug "zsh-users/zsh-history-substring-search" defer:3
 #
 # zplug "BurntSushi/ripgrep",                defer:3, from:"gh-r", as:"command", use:"*darwin*", rename-to:"rg"
 # # zplug "junegunn/fzf-bin",                  defer:3, from:"gh-r", as:"command", use:"*darwin*", rename-to:"fzf"
-# zplug "asdf-vm/asdf",                      defer:3
+zplug "asdf-vm/asdf",                      defer:3
 #
 # if ! zplug check --verbose; then
 #     printf "Install? [y/N]: "
@@ -81,7 +81,7 @@ fi
 #     fi
 # fi
 #
-# zplug load
+zplug load
 
 
 # set autoload path
@@ -220,8 +220,10 @@ alias glS='fzf_git_log_pickaxe'
 bindkey -v # Vim mode
 
 
-if [[ ~/.local.zsh ]]; then
-source ~/.local.zsh
+if [ ! -f ~/.local.zsh ]; then
+  source ~/.local.zsh
+else
+  touch ~/.local.zsh
 fi
 
 
