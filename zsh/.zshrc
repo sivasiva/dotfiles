@@ -53,6 +53,9 @@ setopt auto_cd
 
 stty -ixon
 
+# -----------------------------------------------------
+# Use `zplug` plugin manager to manage plugins
+# -----------------------------------------------------
 if [[ ! -d ~/.zplug ]]; then
   git clone https://github.com/zplug/zplug ~/.zplug
   source ~/.zplug/init.zsh && zplug update
@@ -61,26 +64,26 @@ else
 fi
 
 zplug "lib/history",                       from:"oh-my-zsh"
-# zplug "plugins/autojump",                  from:"oh-my-zsh"
-# zplug "plugins/shrink-path",               from:"oh-my-zsh"
-# zplug "zdharma-continuum/fast-syntax-highlighting",  defer:3
-# zplug "zsh-users/zsh-autosuggestions",     defer:3
+zplug "plugins/autojump",                  from:"oh-my-zsh"
+zplug "plugins/shrink-path",               from:"oh-my-zsh"
+zplug "zdharma-continuum/fast-syntax-highlighting",  defer:3
+zplug "zsh-users/zsh-autosuggestions",     defer:3
 zplug "zsh-users/zsh-completions",     defer:3
-zplug "zsh-users/zsh-history-substring-search" defer:3
-#
 # zplug "BurntSushi/ripgrep",                defer:3, from:"gh-r", as:"command", use:"*darwin*", rename-to:"rg"
-# # zplug "junegunn/fzf-bin",                  defer:3, from:"gh-r", as:"command", use:"*darwin*", rename-to:"fzf"
+# zplug "zsh-users/zsh-history-substring-search" defer:3
+zplug "zsh-users/zsh-history-substring-search", as: plugin
 zplug "asdf-vm/asdf",                      defer:3
-#
-# if ! zplug check --verbose; then
-#     printf "Install? [y/N]: "
-#     if read -q; then
-#         echo; zplug install
-#     else
-#         echo
-#     fi
-# fi
-#
+# zplug "junegunn/fzf",                  defer:3, from:"gh-r", as:"command", use:"*darwin*", rename-to:"fzf"
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
+
 zplug load
 
 
