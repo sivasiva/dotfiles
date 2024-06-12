@@ -1,7 +1,7 @@
 local function map(mode, lhs, rhs, opts)
-  if opts == nil then
-    opts = {}
-  end
+	if opts == nil then
+		opts = {}
+	end
 
 	-- set default value if not specify
 	if opts.noremap == nil then
@@ -30,12 +30,10 @@ map("n", "<C-d>", "<C-d>zz", {})
 map("n", "<C-b>", "<C-b>zz", {})
 map("n", "<C-f>", "<C-f>zz", {})
 
--- leader movements
-map("n", "<Leader>w", ":write<CR>", {})
-map("n", "<Leader>s", ":source %<CR>", {})
+-- map("n", "<Leader>s", ":source %<CR>", {})
 map("n", "<Leader>v", ":cd ~/.config/nvim/<CR>:Telescope find_files<CR>", {})
-map("n", "<Leader>m", ":make<CR>", {})
-map("n", "<Leader>b", ":!busted %<CR>", {})
+-- map("n", "<Leader>m", ":make<CR>", {})
+-- map("n", "<Leader>b", ":!busted %<CR>", {})
 
 -- system clipboard
 map({ "n", "v" }, "<Leader>y", '"+y', {})
@@ -128,6 +126,7 @@ map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- extended bracket mappings
+-- stylua ignore
 map("n", "]{", function()
 	vim.fn.search("{")
 end, {})

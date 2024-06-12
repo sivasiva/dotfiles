@@ -34,7 +34,11 @@ return {
 	},
 	{
 		"akinsho/bufferline.nvim",
+		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("bufferline").setup()
+		end,
 		opts = {
 			options = {
 				separator_style = "slant",
@@ -50,6 +54,24 @@ return {
 			},
 		},
 	},
+	-- {
+	-- 	"akinsho/bufferline.nvim",
+	-- 	dependencies = "nvim-tree/nvim-web-devicons",
+	-- 	opts = {
+	-- 		options = {
+	-- 			separator_style = "slant",
+	-- 			mode = "tabs",
+	-- 			offsets = {
+	-- 				{
+	-- 					filetype = "NvimTree",
+	-- 					text = " File Explorer",
+	-- 					highlight = "Directory",
+	-- 					separator = false,
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"utilyre/barbecue.nvim",
 		name = "barbecue",

@@ -23,20 +23,14 @@ return {
 			-- }
 
 			dashboard.section.buttons.val = {
+				dashboard.button("f", "🔦 Find file", "<cmd>Telescope find_files<CR>"),
 				dashboard.button("n", "  New file", "<cmd>ene<CR>"),
-				-- dashboard.button(
-				-- 	"SPC q l",
-				-- 	"  Restore last session",
-				-- 	[[<cmd>lua require("persistence").load({ last = true })<CR>]]
-				-- ),
+				dashboard.button("s", "🔍 Search", "<cmd>Telescope live_grep<cr>"),
 				dashboard.button("r", "  Recent files", "<cmd>Telescope oldfiles<CR>"),
-				-- dashboard.button("SPC f r", "  Recent files", "<cmd>Telescope oldfiles<CR>"),
-				dashboard.button("f", "🔦  Find file", "<cmd>Telescope find_files<CR>"),
-				-- dashboard.button("SPC f f", "  Find file", "<cmd>Telescope find_files<CR>"),
-				dashboard.button("p", "📁  Projects", "<cmd>Telescope neovim-project discover<CR>"),
+				dashboard.button("p", "📁 Projects", "<cmd>Telescope neovim-project discover<CR>"),
+				dashboard.button("z", "🔍 FZF", "<cmd>FzfLua<cr>"),
 				dashboard.button("l", "󰒲  Lazy", "<cmd>Lazy<CR>"),
 				dashboard.button("m", "󱌣  Mason", "<cmd>Mason<CR>"),
-				dashboard.button("z", "🔍  FZF", "<cmd>FzfLua<cr>"),
 				dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
 			}
 

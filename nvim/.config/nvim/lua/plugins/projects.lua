@@ -46,23 +46,4 @@ return {
 			vim.opt.sessionoptions:append("globals")
 		end,
 	},
-	{
-		"folke/which-key.nvim",
-		opts = function(_, opts)
-			local wk = require("which-key")
-			wk.register({
-				["<leader>p"] = {
-					l = { "<cmd>Telescope neovim-project discover<cr>", "Find project" },
-					f = { "<cmd>Telescope neovim-project discover<cr>", "Find project" },
-					h = { "<cmd>Telescope neovim-project history<cr>", "Project History" },
-					r = { "<cmd>NeovimProjectLoadRecent<cr>", "Open recent project" },
-				},
-				["<leader>z"] = {
-					l = { "<cmd>Telescope zoxide list<cr>", "List directories" },
-					h = { "<cmd>Telescope neovim-project history<cr>", "Project History" },
-					l = { "<cmd>NeovimProjectLoadRecent<cr>", "Open recent project" },
-				},
-			})
-		end,
-	},
 }

@@ -120,10 +120,13 @@ fi
 echo "vdm: $VIM_DEV"
 }
 
+
+# -----------------------------------------------------
+# `fzf` settings
+# -----------------------------------------------------
+
 # To install useful key bindings and fuzzy completion:
 # $(brew --prefix)/opt/fzf/install
-
-# tmuxify
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :500 {}'"
@@ -229,7 +232,9 @@ else
   touch ~/.local.zsh
 fi
 
-
+# -----------------------------------------------------
+# `starship` settings
+# -----------------------------------------------------
 eval "$(starship init zsh)"
 
 
@@ -238,13 +243,17 @@ export PATH="$PATH:`yarn global bin`"
 
 
 
-# zoxide
+# -----------------------------------------------------
+# `zoxide` settings
+# -----------------------------------------------------
 eval "$(zoxide init zsh)"
 # export _ZO_DATA_DIR = "$HOME/.local/share/"
 export _ZO_ECHO=1
 # zoxide
 
-# asdf
+# -----------------------------------------------------
+# `asdf` settings
+# -----------------------------------------------------
 . $HOME/.asdf/asdf.sh
 
 # asdf Ruby
