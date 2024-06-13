@@ -1,4 +1,42 @@
 return {
+	{
+		"nacro90/numb.nvim",
+		opts = {},
+	},
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
+	{
+		"echasnovski/mini.pairs",
+		version = "*",
+		config = function()
+			require("mini.pairs").setup()
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+	},
+	{
+		"MaximilianLloyd/tw-values.nvim",
+		keys = {
+			{
+				"gK",
+				"<cmd>TWValues<cr>",
+				desc = "Show tailwind CSS values",
+			},
+		},
+		opts = {
+			border = "rounded",
+			show_unknown_classes = true,
+			focus_preview = true,
+		},
+	},
+	{
+		"roobert/tailwindcss-colorizer-cmp.nvim",
+	},
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		lazy = false,
@@ -35,62 +73,61 @@ return {
 			},
 		},
 	},
-	{
-		"MaximilianLloyd/tw-values.nvim",
-		keys = {
-			{
-				"gK",
-				"<cmd>TWValues<cr>",
-				desc = "Show tailwind CSS values",
-			},
-		},
-		opts = {
-			border = "rounded",
-			show_unknown_classes = true,
-			focus_preview = true,
-		},
-	},
-	{
-		"nacro90/numb.nvim",
-		opts = {},
-	},
-	{
-		"numToStr/Comment.nvim",
-		opts = {
-			pre_hook = function()
-				return vim.bo.commentstring
-			end,
-		},
-	},
+	-- {
+	-- 	"numToStr/Comment.nvim",
+	-- 	opts = {
+	-- 		pre_hook = function()
+	-- 			return vim.bo.commentstring
+	-- 		end,
+	-- 	},
+	-- },
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 	},
 	{
-		"norcalli/nvim-colorizer.lua",
+		"rafamadriz/friendly-snippets",
 		config = function()
-			require("colorizer").setup()
+			require("luasnip.loaders.from_vscode").lazy_load()
+
+			-- or relative to the directory of $MYVIMRC
+			-- require("luasnip.loaders.from_vscode").load({
+			--   paths = "./my_snippets",
+			-- })
+
+			require("luasnip.loaders.from_lua").load({
+				paths = "~/snippets",
+			})
+		end,
+		dependencies = { "L3MON4D3/LuaSnip" },
+	},
+	{
+		"nvimdev/template.nvim",
+		cmd = { "Template", "TemProject" },
+		config = function()
+			require("template").setup({
+				temp_dir = "~/templates",
+			})
 		end,
 	},
 	{
-		"roobert/tailwindcss-colorizer-cmp.nvim",
-	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		-- branch = "v3",
-		config = function()
-			require("ibl").setup()
-		end,
-	},
-	{
-		"shortcuts/no-neck-pain.nvim",
+		"echasnovski/mini.ai",
 		version = "*",
-		keys = {
-			{ "<Leader>n", ":NoNeckPain<CR>" },
-		},
+		config = function()
+			require("mini.ai").setup()
+		end,
 	},
 	{
-		"barrett-ruth/import-cost.nvim",
-		build = "sh install.sh yarn",
-		config = true,
+		"echasnovski/mini.surround",
+		version = "*",
+		config = function()
+			require("mini.surround").setup()
+		end,
+	},
+	{
+		"echasnovski/mini.comment",
+		version = "*",
+		config = function()
+			require("mini.comment").setup()
+		end,
 	},
 }

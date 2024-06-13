@@ -39,9 +39,6 @@ map("n", "<Leader>v", ":cd ~/.config/nvim/<CR>:Telescope find_files<CR>", {})
 map({ "n", "v" }, "<Leader>y", '"+y', {})
 map({ "n" }, "<Leader>Y", '"+y$', {})
 
-map({ "n", "v" }, "<Leader>p", '"+p', {})
-map({ "n", "v" }, "<Leader>P", '"+P', {})
-
 -- window movements
 map("n", "<C-c>", "<C-w>c", {})
 map("n", "<C-h>", "<C-w>h", { desc = "Go left" })
@@ -139,3 +136,15 @@ end, {})
 map("n", "[)", function()
 	vim.fn.search(")", "b")
 end, {})
+
+map("n", "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", { desc = "Delete Other Buffers" })
+map("n", "<leader>br", "<cmd>BufferLineCloseRight<cr>", { desc = "Delete Buffers to the Right" })
+map("n", "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", { desc = "Delete Buffers to the Left" })
+map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous Buffer" })
+map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
+map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous Buffer" })
+map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
+map("n", "[B", "<cmd>BufferLineMovePrev<cr>", { desc = "Move Buffer Prev" })
+map("n", "]B", "<cmd>BufferLineMoveNext<cr>", { desc = "Move Buffer Next" })
+
+map("n", "<leader>p", "<cmd>Telescope neovim-project discover<cr>", { desc = "Projects Explorer" })
