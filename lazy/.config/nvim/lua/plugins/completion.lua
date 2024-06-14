@@ -1,3 +1,4 @@
+-- REF: https://github.com/m4xshen/dotfiles/tree/main/nvim/nvim
 return {
   {
     "hrsh7th/nvim-cmp",
