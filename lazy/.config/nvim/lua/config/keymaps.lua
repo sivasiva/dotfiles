@@ -8,3 +8,5 @@ map("n", "<Leader>v", ":cd ~/.config/nvim/<CR>:Telescope find_files<CR>", {})
 
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+
+vim.keymap.set("n", "<leader>Z", "<cmd>Zi<CR>", { desc = "Open Zoxide" })

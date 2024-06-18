@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.opt.background = "dark"
+vim.opt.relativenumber = false

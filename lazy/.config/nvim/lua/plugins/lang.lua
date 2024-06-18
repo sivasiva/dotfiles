@@ -19,4 +19,7 @@ return {
       "RainbowMultiDelim",
     },
   },
+  {
+    "NoahTheDuke/vim-just",
+  },
 }

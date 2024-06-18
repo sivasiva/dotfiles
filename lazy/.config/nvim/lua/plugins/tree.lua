@@ -57,6 +57,9 @@ return {
           vim.keymap.set("n", "-", require("mini.files").close, {
             buffer = buf_id,
           })
+          vim.keymap.set("n", "<esc>", require("mini.files").close, {
+            buffer = buf_id,
+          })
           vim.keymap.set("n", "o", gio_open, {
             buffer = buf_id,
           })
@@ -69,9 +72,15 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     cmd = "Neotree",
-    keys = { { "\\", ":Neotree reveal<CR>", {
-      desc = "NeoTree reveal",
-    } } },
+    keys = {
+      {
+        "\\",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+        end,
+        { desc = "Explore files" },
+      },
+    },
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -107,6 +116,14 @@ return {
           },
         },
       },
+    },
+  },
+  -- { "nanotee/zoxide.vim", cmd = "Z" },
+  {
+    "nanotee/zoxide.vim",
+    event = "VeryLazy",
+    dependencies = {
+      "junegunn/fzf",
     },
   },
 }
