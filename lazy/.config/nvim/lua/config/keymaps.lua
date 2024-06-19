@@ -10,3 +10,9 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 vim.keymap.set("n", "<leader>Z", "<cmd>Zi<CR>", { desc = "Open Zoxide" })
+
+vim.api.nvim_create_user_command("LoadSnips", function()
+  require("luasnip.loaders.from_lua").load({
+    path = { "~/snippets" },
+  })
+end, {})

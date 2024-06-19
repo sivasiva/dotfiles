@@ -2,7 +2,7 @@
 local ls = require("luasnip")
 -- local c = ls.choice_node
 local s = ls.snippet
--- local t = ls.text_node
+local t = ls.text_node
 local i = ls.insert_node
 local d = ls.dynamic_node
 local fmt = require("luasnip.extras.fmt").fmt
@@ -89,8 +89,13 @@ Supervisor.start_link(children, strategy: :one_for_one)
 """
 ]]
 
+local stringInterpolator = [[
+#{{{}}}
+]]
+
 ls.add_snippets("elixir", {
-  s("ag", fmt(agentTmpl, { i(1, "AgentName") })),
-  s("gen", fmt(genTmpl, { i(1, "GenServerName") })),
-  s("cron", fmt(cronTmpl, { i(1, "MyApp.Scheduler"), rep(1) })),
+	s("#", fmt(stringInterpolator, { i(1) })),
+	s("ag", fmt(agentTmpl, { i(1, "AgentName") })),
+	s("gen", fmt(genTmpl, { i(1, "GenServerName") })),
+	s("cron", fmt(cronTmpl, { i(1, "MyApp.Scheduler"), rep(1) })),
 })

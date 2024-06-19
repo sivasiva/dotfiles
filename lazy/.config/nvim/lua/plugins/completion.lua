@@ -14,6 +14,45 @@ return {
     },
     config = function()
       local ls = require("luasnip")
+      local lsTypes = require("luasnip.util.types")
+
+      -- REF: https://www.reddit.com/r/neovim/comments/17o87nu/comment/k7wo306/
+      -- ls.config.setup({
+      --   history = true,
+      --   update_events = { "TextChanged", "TextChangedI" },
+      --   enable_autosnippets = true,
+      --   ext_opts = {
+      --     [lsTypes.choiceNode] = {
+      --       active = {
+      --         virt_text = { { "●", "PortalOrange" } },
+      --         hl_mode = "combine",
+      --       },
+      --     },
+      --     [lsTypes.insertNode] = {
+      --       active = {
+      --         virt_text = { { "●", "PortalBlue" } },
+      --         hl_mode = "combine",
+      --       },
+      --     },
+      --   },
+      -- })
+
+      -- REF: https://www.reddit.com/r/neovim/comments/tbtiy9/comment/i0bje36/
+      -- vim.keymap.set({ "i", "s" }, "<C-l>", function()
+      --   if ls.choice_active() then
+      --     ls.change_choice(1)
+      --   else
+      --     ls.jump(1)
+      --   end
+      -- end)
+      -- vim.keymap.set({ "i", "s" }, "<C-h>", function()
+      --   if ls.choice_active() then
+      --     ls.change_choice(-1)
+      --   else
+      --     ls.jump(-1)
+      --   end
+      -- end)
+
       vim.keymap.set({ "i", "s" }, "<C-L>", function()
         ls.jump(1)
       end, { silent = true })
@@ -26,13 +65,51 @@ return {
       cmp.setup({
         snippet = {
           expand = function(args)
-            require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+            ls.lsp_expand(args.body) -- For `luasnip` users.
+            -- require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
           end,
         },
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },
+
+        -- SuperTab like mapping for LuaSnip + nvim-cmp
+        -- REF: https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
+        -- ["<CR>"] = cmp.mapping(function(fallback)
+        --   if cmp.visible() then
+        --     if ls.expandable() then
+        --       ls.expand()
+        --     else
+        --       cmp.confirm({
+        --         select = true,
+        --       })
+        --     end
+        --   else
+        --     fallback()
+        --   end
+        -- end),
+        --
+        -- ["<Tab>"] = cmp.mapping(function(fallback)
+        --   if cmp.visible() then
+        --     cmp.select_next_item()
+        --   elseif ls.locally_jumpable(1) then
+        --     ls.jump(1)
+        --   else
+        --     fallback()
+        --   end
+        -- end, { "i", "s" }),
+        --
+        -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+        --   if cmp.visible() then
+        --     cmp.select_prev_item()
+        --   elseif ls.locally_jumpable(-1) then
+        --     ls.jump(-1)
+        --   else
+        --     fallback()
+        --   end
+        -- end, { "i", "s" }),
+
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),

@@ -1,14 +1,14 @@
 local ls = require("luasnip")
--- local c = ls.choice_node
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
--- local d = ls.dynamic_node
 local fmt = require("luasnip.extras.fmt").fmt
 local extras = require("luasnip.extras")
--- local l = extras.lambda
 local rep = extras.rep
 local f = ls.function_node
+-- local c = ls.choice_node
+-- local l = extras.lambda
+-- local d = ls.dynamic_node
 
 -- https://medium.com/scoro-engineering/5-smart-mini-snippets-for-making-text-editing-more-fun-in-neovim-b55ffb96325a
 -- ls.config.set_config({
@@ -135,26 +135,26 @@ local liveComponentHX = [[
 ]]
 
 ls.add_snippets(
-  "elixir",
-  {
-    s("%", fmt("<% {} %>", { i(1) })),
-    s("=", fmt("<%= {} %>", { i(1) })),
-    s("fc", fmt(functionComponent, { i(1, "componentName"), rep(1) })),
-    s("forHX", fmt(forHX, { i(1, "item"), i(2, "items"), i(3) })),
-    s("h", fmt(sigilH, { i(1) })),
-    s("he", fmt(handleEvent, { i(1, "eventName") })),
-    s("hePushPatch", fmt(handleEventPushPatch, { i(1, "route") })),
-    s("hp", fmt(hpFn, { i(1) })),
-    s("ifElement", fmt(ifElement, { i(1, "div"), i(2), i(3), rep(1) })),
-    s("liHX", fmt(liHX, { i(1), i(2) })),
-    s("linkNavigateHX", fmt(linkNavigate, { i(1), i(2) })),
-    s("linkPatchHX", fmt(hxLinkPatch, { i(1), i(2) })),
-    s("lv", fmt(liveView, { i(1, "AppName"), i(2, "Module"), rep(1), rep(1), rep(2) })),
-    s("liveComponent", fmt(liveComponentHX, { i(1), i(2) })),
-    -- s("liveComponent", fmt("<.live_component module={{{}}} id=":unique_id" />", {i(1)}))),
-    s("pre", fmt(preHX, { i(1) })),
-    s("slot", t("<%= render_slot(@inner_block) %>")),
-  }
-  -- https://medium.com/scoro-engineering/5-smart-mini-snippets-for-making-text-editing-more-fun-in-neovim-b55ffb96325a
-  -- { type = "autosnippets" }
+	"elixir",
+	{
+		s("%", fmt("<% {} %>", { i(1) })),
+		s("=", fmt("<%= {} %>", { i(1) })),
+		s("fc", fmt(functionComponent, { i(1, "componentName"), rep(1) })),
+		s("forHX", fmt(forHX, { i(1, "item"), i(2, "items"), i(3) })),
+		s("h", fmt(sigilH, { i(1) })),
+		s("he", fmt(handleEvent, { i(1, "eventName") })),
+		s("hePushPatch", fmt(handleEventPushPatch, { i(1, "route") })),
+		s("hp", fmt(hpFn, { i(1) })),
+		s("ifElement", fmt(ifElement, { i(1, "div"), i(2), i(3), rep(1) })),
+		s("liHX", fmt(liHX, { i(1), i(2) })),
+		s("linkNavigateHX", fmt(linkNavigate, { i(1), i(2) })),
+		s("linkPatchHX", fmt(hxLinkPatch, { i(1), i(2) })),
+		s("lv", fmt(liveView, { i(1, "AppName"), i(2, "Module"), rep(1), rep(1), rep(2) })),
+		s("liveComponent", fmt(liveComponentHX, { i(1), i(2) })),
+		-- s("liveComponent", fmt("<.live_component module={{{}}} id=":unique_id" />", {i(1)}))),
+		s("pre", fmt(preHX, { i(1) })),
+		s("slot", t("<%= render_slot(@inner_block) %>")),
+	}
+	-- https://medium.com/scoro-engineering/5-smart-mini-snippets-for-making-text-editing-more-fun-in-neovim-b55ffb96325a
+	-- { type = "autosnippets" }
 )
