@@ -4,3 +4,6 @@
 
 vim.opt.background = "dark"
 vim.opt.relativenumber = false
+
+-- Markdown - remove fancy
+-- vim.opt.conceallevel = 0
