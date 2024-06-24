@@ -1,3 +1,12 @@
+# zmodload zsh/zprof
+
+# Source Prezto.
+# REF: https://wikimatze.de/better-zsh-with-prezto/
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+export DISABLE_AUTO_TITLE='true'
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
 alias g="git status"
@@ -24,7 +33,7 @@ alias tls="t ls"
 alias tks="t kill-server"
 alias tkill="t kill-session -t ${1}"
 alias tso="t source-file ~/.tmux.conf"
-alias tml="tmuxp load ."
+# alias tml="tmuxp load ."
 alias tt="$EDITOR ~/.tmux.conf"
 
 alias v="nvim"
@@ -56,35 +65,35 @@ stty -ixon
 # -----------------------------------------------------
 # Use `zplug` plugin manager to manage plugins
 # -----------------------------------------------------
-if [[ ! -d ~/.zplug ]]; then
-  git clone https://github.com/zplug/zplug ~/.zplug
-  source ~/.zplug/init.zsh && zplug update
-else
-  source ~/.zplug/init.zsh
-fi
-
-zplug "lib/history",                       from:"oh-my-zsh"
-zplug "plugins/autojump",                  from:"oh-my-zsh"
-zplug "plugins/shrink-path",               from:"oh-my-zsh"
-zplug "zdharma-continuum/fast-syntax-highlighting",  defer:3
-zplug "zsh-users/zsh-autosuggestions",     defer:3
-zplug "zsh-users/zsh-completions",     defer:3
-# zplug "BurntSushi/ripgrep",                defer:3, from:"gh-r", as:"command", use:"*darwin*", rename-to:"rg"
-# zplug "zsh-users/zsh-history-substring-search" defer:3
-zplug "zsh-users/zsh-history-substring-search", as: plugin
-zplug "asdf-vm/asdf",                      defer:3
-# zplug "junegunn/fzf",                  defer:3, from:"gh-r", as:"command", use:"*darwin*", rename-to:"fzf"
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    else
-        echo
-    fi
-fi
-
-zplug load
+# if [[ ! -d ~/.zplug ]]; then
+#   git clone https://github.com/zplug/zplug ~/.zplug
+#   source ~/.zplug/init.zsh && zplug update
+# else
+#   source ~/.zplug/init.zsh
+# fi
+#
+# zplug "lib/history",                       from:"oh-my-zsh"
+# zplug "plugins/autojump",                  from:"oh-my-zsh"
+# zplug "plugins/shrink-path",               from:"oh-my-zsh"
+# zplug "zdharma-continuum/fast-syntax-highlighting",  defer:3
+# zplug "zsh-users/zsh-autosuggestions",     defer:3
+# zplug "zsh-users/zsh-completions",     defer:3
+# # zplug "BurntSushi/ripgrep",                defer:3, from:"gh-r", as:"command", use:"*darwin*", rename-to:"rg"
+# # zplug "zsh-users/zsh-history-substring-search" defer:3
+# zplug "zsh-users/zsh-history-substring-search", as: plugin
+# zplug "asdf-vm/asdf",                      defer:3
+# # zplug "junegunn/fzf",                  defer:3, from:"gh-r", as:"command", use:"*darwin*", rename-to:"fzf"
+#
+# if ! zplug check --verbose; then
+#     printf "Install? [y/N]: "
+#     if read -q; then
+#         echo; zplug install
+#     else
+#         echo
+#     fi
+# fi
+#
+# zplug load
 
 
 # set autoload path
@@ -118,6 +127,15 @@ else
 fi
 
 echo "vdm: $VIM_DEV"
+}
+
+tml() {
+  if [ -f .tmuxp.yml ]; then
+    clear
+    tmuxp load .tmuxp.yml
+  else
+    tmuxp load ~/projects/.tmuxp.yml
+  fi
 }
 
 
@@ -265,3 +283,4 @@ export RUBY_CONFIGURE_OPTS="--with-zlib-dir=$(brew --prefix zlib) \
 # asdf
 
 
+# zprof
