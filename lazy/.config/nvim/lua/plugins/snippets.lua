@@ -4,13 +4,10 @@ return {
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
 
-      -- or relative to the directory of $MYVIMRC
-      -- require("luasnip.loaders.from_vscode").load({
-      --   paths = "./my_snippets",
-      -- })
-
+      -- IMPORTANT !!! luasnip does not like symlinks.
+      -- So dont `stow` snippets, just directly link to the dotter path, as here
       require("luasnip.loaders.from_lua").load({
-        paths = "~/snippets",
+        paths = { "~/dotter/snippets/" },
       })
     end,
   },

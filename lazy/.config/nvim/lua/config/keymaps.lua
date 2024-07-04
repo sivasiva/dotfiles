@@ -5,6 +5,7 @@ local Util = require("lazyvim.util")
 local map = Util.safe_keymap_set
 
 map("n", "<Leader>v", ":cd ~/.config/nvim/<CR>:Telescope find_files<CR>", {})
+map("n", "<C-p>", "<cmd>Telescope find_files<CR>", {})
 
 map("v", "<", "<gv")
 map("v", ">", ">gv")

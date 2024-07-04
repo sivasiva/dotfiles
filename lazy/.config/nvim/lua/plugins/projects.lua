@@ -15,6 +15,8 @@ return {
     opts = {
       projects = { -- define project roots
         "~/projects/*",
+        "~/ref/*",
+        "~/sandbox/*",
         "~/projects/notes/*",
         "~/work/*",
         "~/notion/*",
@@ -22,7 +24,7 @@ return {
         "~/work/dm2024/*",
         "~/work/e/*",
         "~/.config/*",
-        "~/.config/*",
+        "~/dotter",
       },
       dashboard_mode = true,
       session_manager_opts = {

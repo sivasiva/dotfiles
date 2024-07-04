@@ -118,6 +118,12 @@ local refTmpl = [[
 {}
 ]]
 
+local heexSigil = [[
+~H"""
+  {}
+"""
+]]
+
 ls.add_snippets("elixir", {
 	s("ag", fmt(agentTmpl, { i(1, "AgentName") })),
 	s("gen", fmt(genTmpl, { i(1, "GenServerName") })),
@@ -126,4 +132,5 @@ ls.add_snippets("elixir", {
 	s("comm2", fmt(commChoiceTmpl, { c(1, { t("REF: "), t("TODO: "), t("NOTE: ") }), i(2), i(3) })),
 	s("todo", fmt(todoTmpl, { i(1), i(2) })),
 	s("ref", fmt(refTmpl, { i(1), i(2) })),
+	s("hx", fmt(heexSigil, { i(1) })),
 })
