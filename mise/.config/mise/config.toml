@@ -1,0 +1,11 @@
+[tools]
+node = "20"
+erlang = "26"
+elixir = "1.16"
+python = "3"
+go = "1.21"
+yarn = "1.22"
+redis = "6"
+ruby = "3"
+neovim = "0.10"
+pnpm = "latest"

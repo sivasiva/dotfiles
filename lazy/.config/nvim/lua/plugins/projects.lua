@@ -16,6 +16,7 @@ return {
       projects = { -- define project roots
         "~/projects/*",
         "~/ref/*",
+        "~/dev/*",
         "~/sandbox/*",
         "~/projects/notes/*",
         "~/work/*",

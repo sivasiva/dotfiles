@@ -158,8 +158,9 @@ fzf_git_log_pickaxe() {
 alias glS='fzf_git_log_pickaxe'
 
 
-. $(brew --prefix asdf)/libexec/asdf.sh
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/local.zsh ] && source ~/local.zsh
 
+# export MISE_DEBUG=1 
+# export MISE_TRACE=1 
+eval "$(/Users/siva2025/.local/bin/mise activate zsh)"
