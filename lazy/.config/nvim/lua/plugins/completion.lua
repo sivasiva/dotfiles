@@ -15,7 +15,7 @@ return {
     },
     config = function()
       local ls = require("luasnip")
-      local lsTypes = require("luasnip.util.types")
+      -- local lsTypes = require("luasnip.util.types")
 
       vim.keymap.set({ "i", "s" }, "<C-L>", function()
         ls.jump(1)
@@ -28,6 +28,7 @@ return {
         silent = true,
       })
 
+      local nvim_lsp = require("lspconfig")
       local lspkind = require("lspkind")
       local cmp = require("cmp")
       cmp.setup({
@@ -101,6 +102,18 @@ return {
               return vim_item
             end,
           }),
+        },
+      })
+
+      nvim_lsp.tailwindcss.setup({
+        settings = {
+          tailwindCSS = {
+            includeLanguages = {
+              elixir = "html-eex",
+              eelixir = "html-eex",
+              heex = "html-eex",
+            },
+          },
         },
       })
 
