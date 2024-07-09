@@ -1,17 +1,14 @@
 return {
-  {
-    "MaximilianLloyd/tw-values.nvim",
-    keys = {
-      {
-        "gK",
-        "<cmd>TWValues<cr>",
-        desc = "Show tailwind CSS values",
-      },
-    },
+  { -- Adds git related signs to the gutter, as well as utilities for managing changes
+    "lewis6991/gitsigns.nvim",
     opts = {
-      border = "rounded",
-      show_unknown_classes = true,
-      focus_preview = true,
+      signs = {
+        add = { text = "+" },
+        change = { text = "~" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+      },
     },
   },
   {
