@@ -18,6 +18,50 @@ defmodule {}.{} do
 end
 ]]
 
+local mix1Tmpl = [[
+defmodule Mix.Tasks.Gen{} do
+  use Mix.Task
+
+  def run(_) do
+    Mix.Task.run("app.start", [])
+
+    # Tx.GenTx.generate_csv()
+  end
+end
+
+]]
+
+local mixCopyTmpl = [[
+defmodule Mix.Tasks.Seed{}Data do
+  use Mix.Task
+
+  def run(path) do
+    Mix.Task.run("app.start", [])
+
+    opts = App.Repo.config()
+    {{:ok, pid}} = Postgrex.start_link(opts)
+
+    Postgrex.transaction(
+      pid, 
+      fn conn ->
+        stream =
+          Postgrex.stream(
+            conn,
+            "COPY locations(name,latitude,longitude) FROM STDIN CSV HEADER DELIMITER ','",
+            []
+          )
+
+        Enum.into(File.stream!(path, [:trim_bom]), stream)
+      end,
+      timeout: :infinity
+    )
+  end
+end
+]]
+
 ls.add_snippets("elixir", {
 	s("cmp", fmt(componentTmpl, { i(1, "ModuleName"), i(2), rep(1) })),
+	s("mix gen", fmt(mix1Tmpl, { i(1, "ModuleName") })),
+	-- s("mix migrate", fmt(mix2Tmpl, {})),
+	s("mix seed", fmt(mixCopyTmpl, { i(1, "ModuleName") })),
 })

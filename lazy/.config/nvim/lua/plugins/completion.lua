@@ -1,4 +1,5 @@
 -- REF: https://github.com/m4xshen/dotfiles/tree/main/nvim/nvim
+-- REF: https://github.com/xero/dotfiles/blob/2399d76adbc2a224a305b02d938deabc4cee3df1/neovim/.config/nvim/lua/plugins/cmp.lua
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -105,17 +106,17 @@ return {
         },
       })
 
-      nvim_lsp.tailwindcss.setup({
-        settings = {
-          tailwindCSS = {
-            includeLanguages = {
-              elixir = "html-eex",
-              eelixir = "html-eex",
-              heex = "html-eex",
-            },
-          },
-        },
-      })
+      -- nvim_lsp.tailwindcss.setup({
+      --   settings = {
+      --     tailwindCSS = {
+      --       includeLanguages = {
+      --         elixir = "html-eex",
+      --         eelixir = "html-eex",
+      --         heex = "html-eex",
+      --       },
+      --     },
+      --   },
+      -- })
 
       cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
