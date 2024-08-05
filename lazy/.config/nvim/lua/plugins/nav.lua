@@ -89,6 +89,23 @@ return {
     },
     -- https://github.com/nvim-neo-tree/neo-tree.nvim/discussions/353#discussioncomment-5637248
     opts = {
+      event_handlers = {
+        {
+          event = "neo_tree_window_after_open",
+          handler = function(e)
+            local filish = vim.bo.filetype
+            local result = ""
+            for key, val in pairs(e) do
+              result = result .. "|" .. key .. "=" .. tostring(val)
+              -- if val.global_local == false and val.scope == "win" then
+              --   result = result .. "|" .. key .. "=" .. tostring(v[key] or "<not set>")
+              -- end
+            end
+            print("NEOTREE enter", filish, result)
+          end,
+          -- id = "neotree-entered",
+        },
+      },
       filesystem = {
         window = {
           mappings = {

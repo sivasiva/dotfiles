@@ -4,8 +4,10 @@ return {
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
 
-      -- IMPORTANT !!! luasnip does not like symlinks.
-      -- So dont `stow` snippets, just directly link to the dotter path, as here
+      -- -------------------------------------------------
+      -- IMPORTANT !!! luasnip does not work with symlinks.
+      -- So `stow snippets` wont work. Just directly link to the dotter path, as here
+      -- -------------------------------------------------
       require("luasnip.loaders.from_lua").load({
         paths = { "~/dotter/snippets/" },
       })

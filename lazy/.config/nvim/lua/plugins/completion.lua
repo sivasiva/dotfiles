@@ -71,6 +71,32 @@ return {
           -- disable completion in comments
           local context = require("cmp.config.context")
 
+          if vim.bo.filetype == "neo-tree" then
+            print("INSIDE Neotree", vim.bo.filetype)
+            return false
+          end
+          -- local api = vim.api
+          --
+          -- -- local all_options = api.nvim_get_all_options_info()
+          -- local win_number = api.nvim_get_current_win()
+          -- local v = vim.wo[win_number]
+          -- local all_options = api.nvim_get_all_options_info()
+          -- local result = ""
+          -- for key, val in pairs(all_options) do
+          --   if val.global_local == false and val.scope == "win" then
+          --     result = result .. "|" .. key .. "=" .. tostring(v[key] or "<not set>")
+          --   end
+          -- end
+          -- print("WINDOW:", win_number, result)
+
+          -- local manager = require("neo-tree.sources.manager")
+          -- local renderer = require("neo-tree.ui.renderer")
+          -- local state = manager.get_state("filesystem")
+          -- local window_exists = renderer.window_exists(state)
+          -- local windid = manager.get_state("filesystem").winid
+
+          -- print("Context", windid, window_exists)
+
           -- keep command mode completion enabled
           if vim.api.nvim_get_mode().mode == "c" then
             return true
