@@ -68,7 +68,7 @@ tml() {
   if [ -f .tmuxp.yml ]; then
     tmuxp load .tmuxp.yml
   else
-    tmuxp load ~/projects/.tmuxp.yml
+    echo "No .tmuxp.yml here"
   fi
 }
 

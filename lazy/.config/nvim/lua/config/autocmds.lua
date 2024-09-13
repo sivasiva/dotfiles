@@ -95,3 +95,5 @@ end
 --     -- print("now") -- this just helps me know when the lsp starts
 --   end,
 -- })
+
+-- autocmd! BufRead,BufNewFile *.html  call jinja#AdjustFiletype()

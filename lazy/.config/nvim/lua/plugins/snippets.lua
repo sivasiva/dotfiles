@@ -9,7 +9,7 @@ return {
       -- So `stow snippets` wont work. Just directly link to the dotter path, as here
       -- -------------------------------------------------
       require("luasnip.loaders.from_lua").load({
-        paths = { "~/dotter/snippets/" },
+        paths = { "~/.config/snippets/" },
       })
     end,
   },

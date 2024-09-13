@@ -92,16 +92,16 @@ return {
       event_handlers = {
         {
           event = "neo_tree_window_after_open",
-          handler = function(e)
-            local filish = vim.bo.filetype
-            local result = ""
-            for key, val in pairs(e) do
-              result = result .. "|" .. key .. "=" .. tostring(val)
-              -- if val.global_local == false and val.scope == "win" then
-              --   result = result .. "|" .. key .. "=" .. tostring(v[key] or "<not set>")
-              -- end
-            end
-            print("NEOTREE enter", filish, result)
+          handler = function()
+            --   local filish = vim.bo.filetype
+            --   local result = ""
+            --   for key, val in pairs(e) do
+            --     result = result .. "|" .. key .. "=" .. tostring(val)
+            --     -- if val.global_local == false and val.scope == "win" then
+            --     --   result = result .. "|" .. key .. "=" .. tostring(v[key] or "<not set>")
+            --     -- end
+            --   end
+            --   print("NEOTREE enter", filish, result)
           end,
           -- id = "neotree-entered",
         },
@@ -124,6 +124,7 @@ return {
             ".DS_Store",
             "thumbs.db",
             ".idea",
+            ".history",
             -- hide files from these folders, when searching within Neo-Tree explorer
             "_build",
             "deps",

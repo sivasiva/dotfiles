@@ -20,6 +20,8 @@ brew 'neovim'
 brew 'tree-sitter'
 brew 'putty'
 brew 'yarn'
+brew 'yq'
+brew 'mise'
 
 # Development
 brew 'git'

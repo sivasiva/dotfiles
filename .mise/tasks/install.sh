@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 
-echo "Uninstalling dotfiles...";
+echo "Installing dotfiles...";
+echo "DISABLED to avoid pain.";
+
+exit 1
 
 clear
 timestamp=$(date +"%Y%m%d_%H%M%S")
@@ -13,8 +16,7 @@ mv ~/.local/share/nvim{,.bak.${timestamp}}
 mv ~/.local/state/nvim{,.bak.${timestamp}}
 mv ~/.cache/nvim{,.bak.${timestamp}}
 mv ~/.config/nvim{,.bak.${timestamp}}
-# leave ~/.local.zsh alone, if it exists
-# mv $LOCAL_ZSH{,.bak.${timestamp}}
+# mv ~/.local.zsh{,.bak.${timestamp}}
 echo '1. Backup done.';
 
 cd $STOW_DIR
@@ -24,12 +26,16 @@ for file in $STOW_DIR/*; do
 
   if [ -d ${file} ]; then
     if [ "$x" != ".DS_Store" ]; then
-        stow -D -t $HOME -R $(basename $file)
-        echo "$(basename $file) removed."; 
+        stow -t $HOME -R $(basename $file)
+        echo "$(basename $file) installed."; 
     fi
   fi
 done
-echo '2. Uninstall done.';
+echo '2. Install done.';
+
+if [ ! -f $LOCAL_ZSH ]; then
+  touch $LOCAL_ZSH
+fi
 
 # Return to where we ran the script from
 cd ~- 
