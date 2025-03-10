@@ -50,7 +50,8 @@ alias lh='ls -d .*'                      # show hidden files/directories only
 alias ll='ls -FGlAhp'
 alias ls='ls -GFh'                       # Colorize output, add file type indicator, and put sizes in human readable format
 alias lsd='ls -aFhlG'
-alias npm="pnpm"
+# alias npm="pnpm"
+# alias onpm="npm"
 alias n="npm"
 alias soz="source ~/.zshrc"
 alias t="tmux"
@@ -61,6 +62,7 @@ alias tmux="tmux -2" # Fix Tmux colors
 alias tso="t source-file ~/.tmux.conf"
 alias v="nvim"
 alias y="yarn"
+alias dm="cd ~/projects/dm && tml"
 
 # alias tml="cd ~/projects/ && tmuxp load ."
 tml() {
@@ -164,3 +166,26 @@ alias glS='fzf_git_log_pickaxe'
 # export MISE_DEBUG=1 
 # export MISE_TRACE=1 
 eval "$(/Users/siva2025/.local/bin/mise activate zsh)"
+
+
+function kill_port_proc {
+    readonly port=${1:?"The port must be specified."}
+
+    PORT_NUMBER=$1
+    lsof -i tcp:${PORT_NUMBER} | awk 'NR!=1 {print $2}' | xargs kill
+}
+alias killport=kill_port_proc
+
+# bun completions
+[ -s "/Users/siva2025/.bun/_bun" ] && source "/Users/siva2025/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault-pass
+export DEFAULT_VAULT_PASSWORD_FILE=~/.vault-pass
+
+
+# export PATH=$HOME/.local/share/mise/installs/erlang/27.2/erts-14.2.5.4/bin:$PATH
+# export PATH=$HOME/.local/share/mise/installs/elixir/1.18.2-otp-27/bin:$PATH

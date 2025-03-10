@@ -14,8 +14,16 @@ return {
           pair = "''",
           disabled_filetypes = { "markdown" },
         },
-        ["`"] = { escape = false, close = true, pair = "``" },
-        [">"] = { escape = false, close = false, pair = "><" },
+        ["`"] = {
+          escape = false,
+          close = true,
+          pair = "``",
+        },
+        [">"] = {
+          escape = false,
+          close = false,
+          pair = "><",
+        },
       },
     },
   },
@@ -33,10 +41,7 @@ return {
     name = "barbecue",
     version = "*",
     theme = "catppuccin",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
-    },
+    dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" },
     opts = {
       show_dirname = false,
       show_basename = false,
@@ -48,11 +53,34 @@ return {
       cursorword = {
         enable = true,
         min_length = 3,
-        hl = { underline = true },
+        hl = {
+          underline = true,
+        },
       },
       cursorline = {
         enable = false,
       },
+    },
+  },
+  {
+    "MaximilianLloyd/tw-values.nvim",
+    keys = { {
+      "gK",
+      "<cmd>TWValues<cr>",
+      desc = "Show tailwind CSS values",
+    } },
+    opts = {
+      border = "rounded",
+      show_unknown_classes = true,
+      focus_preview = true,
+    },
+  },
+  {
+    "numToStr/Comment.nvim",
+    opts = {
+      pre_hook = function()
+        return vim.bo.commentstring
+      end,
     },
   },
 }

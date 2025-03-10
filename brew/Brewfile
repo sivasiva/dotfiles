@@ -32,6 +32,8 @@ brew 'gnu-sed'
 brew 'lazygit'
 brew 'hygen'
 
+brew 'pwgen'
+
 # https://stackoverflow.com/questions/12618232/copy-a-few-of-the-columns-of-a-csv-file-into-a-table/49906327#49906327
 # https://miller.readthedocs.io/en/latest/installing-miller/
 brew 'miller'

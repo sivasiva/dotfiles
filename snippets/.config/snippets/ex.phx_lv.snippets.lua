@@ -6,9 +6,9 @@ local fmt = require("luasnip.extras.fmt").fmt
 local extras = require("luasnip.extras")
 local rep = extras.rep
 local f = ls.function_node
--- local d = ls.dynamic_node
--- local l = extras.lambda
 -- local c = ls.choice_node
+-- local l = extras.lambda
+-- local d = ls.dynamic_node
 
 -- https://medium.com/scoro-engineering/5-smart-mini-snippets-for-making-text-editing-more-fun-in-neovim-b55ffb96325a
 -- ls.config.set_config({
@@ -20,6 +20,8 @@ local sigilH = [[
   {}
 """
 ]]
+
+local map = [[%{{ "{}" => {} }}]]
 
 local liveView = [[
   defmodule {}.{}Live do
@@ -86,6 +88,7 @@ end
 ]]
 
 local functionComponent = [[
+slot :inner_block, required: true
 def {}(assigns) do
   ~H"""
     <div class="{}">
@@ -134,6 +137,10 @@ local liveComponentHX = [[
   <.live_component module={{{}}} id=":{}"/>
 ]]
 
+local inspector = [[
+  IO.inspect({}, label: "{}")
+]]
+
 ls.add_snippets(
 	"elixir",
 	{
@@ -142,7 +149,10 @@ ls.add_snippets(
 		s("fc", fmt(functionComponent, { i(1, "componentName"), rep(1) })),
 		s("forHX", fmt(forHX, { i(1, "item"), i(2, "items"), i(3) })),
 		s("h", fmt(sigilH, { i(1) })),
+		s("m", fmt(map, { i(1), rep(1) })),
+		s("ins", fmt(inspector, { i(1), rep(1) })),
 		s("he", fmt(handleEvent, { i(1, "eventName") })),
+		s("ev", fmt(handleEvent, { i(1, "eventName") })),
 		s("hePushPatch", fmt(handleEventPushPatch, { i(1, "route") })),
 		s("hp", fmt(hpFn, { i(1) })),
 		s("ifElement", fmt(ifElement, { i(1, "div"), i(2), i(3), rep(1) })),

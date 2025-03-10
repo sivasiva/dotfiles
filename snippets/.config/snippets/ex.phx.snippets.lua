@@ -59,9 +59,12 @@ defmodule Mix.Tasks.Seed{}Data do
 end
 ]]
 
+local patternMatcher = [[%{{ "{}" => {} }}]]
+
 ls.add_snippets("elixir", {
 	s("cmp", fmt(componentTmpl, { i(1, "ModuleName"), i(2), rep(1) })),
 	s("mix gen", fmt(mix1Tmpl, { i(1, "ModuleName") })),
 	-- s("mix migrate", fmt(mix2Tmpl, {})),
 	s("mix seed", fmt(mixCopyTmpl, { i(1, "ModuleName") })),
+	s("%", fmt(patternMatcher, { i(1, "name"), i(2, "value") })),
 })

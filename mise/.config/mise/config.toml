@@ -1,14 +1,14 @@
 [tools]
-erlang = "26"
-elixir = "1.16"
-python = "3"
-yarn = "1.22"
-redis = "6"
-ruby = "3"
 neovim = "0.10"
-pnpm = "latest"
-go = "1.22"
 node = "22"
+pnpm = "latest"
+deno = "latest"
+ruby = "3.3.5"
+redis = "6.2.17"
+go = "1.23.2"
+python = "3.13.0"
+elixir = "1.18.2-otp-27"
+erlang = "27.3"
 
 [settings]
 experimental = true
