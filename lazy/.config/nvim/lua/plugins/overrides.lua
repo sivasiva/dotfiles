@@ -17,9 +17,13 @@ return {
         sources = {
           explorer = {
             include = {
-              ".mise",
+              ".mise*",
+              -- ".mise.toml",
               ".github",
               ".config",
+              ".env*",
+              -- ".env.example",
+              ".gitignore",
             },
             exclude = {
               ".idea",

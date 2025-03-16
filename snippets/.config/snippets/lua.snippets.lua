@@ -36,22 +36,6 @@ local block = [[
 -- -------------------------------------------------
 ]]
 
--- -------------------------------------------------
--- LuaSnip choice_node keymaps
--- REF: https://www.reddit.com/r/neovim/comments/tbtiy9/comment/i0bje36/
--- -------------------------------------------------
-vim.keymap.set({ "i", "s" }, "<C-l>", function()
-	if ls.choice_active() then
-		ls.change_choice(1)
-	end
-end)
-
-vim.keymap.set({ "i", "s" }, "<C-h>", function()
-	if ls.choice_active() then
-		ls.change_choice(-1)
-	end
-end)
-
 local func_tmpl = [[
 -- {}
 function {}({})
