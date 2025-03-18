@@ -141,6 +141,14 @@ local inspector = [[
   IO.inspect({}, label: "{}")
 ]]
 
+local list = [[
+<ul>
+  <li :for={{item <- @{}}}>
+  <%= item.name %>
+  </li>
+</ul>
+]]
+
 ls.add_snippets(
 	"elixir",
 	{
@@ -163,6 +171,7 @@ ls.add_snippets(
 		s("liveComponent", fmt(liveComponentHX, { i(1), i(2) })),
 		-- s("liveComponent", fmt("<.live_component module={{{}}} id=":unique_id" />", {i(1)}))),
 		s("pre", fmt(preHX, { i(1) })),
+		s("list", fmt(list, { i(1, "items") })),
 		s("slot", t("<%= render_slot(@inner_block) %>")),
 	}
 	-- https://medium.com/scoro-engineering/5-smart-mini-snippets-for-making-text-editing-more-fun-in-neovim-b55ffb96325a

@@ -24,6 +24,7 @@ return {
               ".env*",
               -- ".env.example",
               ".gitignore",
+              ".tmuxp.yml",
             },
             exclude = {
               ".idea",
