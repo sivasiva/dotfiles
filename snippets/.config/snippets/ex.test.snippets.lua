@@ -26,6 +26,11 @@ local liveViewRoutes = [[
   live "/{}/:id/show/edit", {}Live.Show, :edit
 ]]
 
+local siva = [[
+  result = {}
+  assert result == "siva"
+]]
+
 ls.add_snippets("elixir", {
 	s("lvt", fmt(liveViewTest, { i(1, "renders live view"), i(2, "route"), i() })),
 	s(
@@ -43,4 +48,5 @@ ls.add_snippets("elixir", {
 			rep(2),
 		})
 	),
+	s("siva", fmt(siva, { i(1) })),
 })

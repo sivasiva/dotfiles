@@ -55,6 +55,42 @@ defmodule {} do
 end
 ]]
 
+local gen2 = [[
+defmodule <> do
+  use GenServer
+
+  # ----------------------------------------------------
+  # Client API 
+  # ----------------------------------------------------
+  def start_link(_), do: GenServer.start_link(__MODULE__, nil, name: __MODULE__)
+  def add(k, v), do: GenServer.cast(__MODULE__, {:add, {k, v}})
+  def get(k), do: GenServer.call(__MODULE__, {:get, k})
+  def all(), do: GenServer.call(__MODULE__, {:all})
+
+  # ----------------------------------------------------
+  # Server API 
+  # ----------------------------------------------------
+  def init(_), do: {:ok, %{}}
+
+  # Sync Calls, reply
+  # ----------------------------------------------------
+  def handle_call({:get, k}, _, state) do
+    {:reply, Map.get(state, k), state}
+  end
+
+  def handle_call({:all}, _, state) do
+    {:reply, state, state}
+  end
+
+  # Async Calls, noreply
+  # ----------------------------------------------------
+  def handle_cast({:add, {k, v}}, state) do
+    {:noreply, Map.put(state, k, v)}
+  end
+end
+
+]]
+
 local cronTmpl = [[
 # https://stackoverflow.com/a/32097971
 defmodule {} do
@@ -133,4 +169,5 @@ ls.add_snippets("elixir", {
 	s("todo", fmt(todoTmpl, { i(1), i(2) })),
 	s("ref", fmt(refTmpl, { i(1), i(2) })),
 	s("hx", fmt(heexSigil, { i(1) })),
+	s("gs", fmt(gen2, { i(1) }, { delimiters = "<>" })),
 })

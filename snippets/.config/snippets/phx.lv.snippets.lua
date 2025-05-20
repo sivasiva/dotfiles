@@ -3,6 +3,7 @@ local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt
+local fmta = require("luasnip.extras.fmt").fmta
 local extras = require("luasnip.extras")
 local rep = extras.rep
 local f = ls.function_node
@@ -14,6 +15,16 @@ local f = ls.function_node
 -- ls.config.set_config({
 --   enable_autosnippets = true,
 -- })
+--
+local flop = [[
+  case Flop.validate_and_run({}, params, for: {}) do
+    {{:ok, {{ {}, meta}} ->
+      %{{{}: {}, meta: meta}}
+
+    {{:error, meta}} ->
+      %{{{}: [], meta: meta}}
+  end
+]]
 
 local sigilH = [[
 ~H"""
@@ -98,6 +109,14 @@ def {}(assigns) do
 end
 ]]
 
+local hxComponent = [[
+def {}(assigns) do
+  ~H"""
+    {}
+  """
+end
+]]
+
 local forHX = [[
   <%= for {} <- @{} do %>
   {}
@@ -138,7 +157,7 @@ local liveComponentHX = [[
 ]]
 
 local inspector = [[
-  IO.inspect({}, label: "{}")
+  IO.inspect({}, label: ">>>>>>>>>>>>>>>>> {}")
 ]]
 
 local list = [[
@@ -149,30 +168,60 @@ local list = [[
 </ul>
 ]]
 
+local inspect = [[
+<pre><%= inspect(assigns, pretty: true) %></pre>
+]]
+
+local ifHeex = [[
+  <%= if {} do %>
+  <% end %>
+]]
+
+local elseHeex = [[
+  <% else %>
+  {}
+]]
+
+local flopSchema = [[
+  @derive {{
+    Flop.Schema,
+    filterable: [:name], sortable: [:name], default_limit: 5
+  }}
+]]
+
 ls.add_snippets(
 	"elixir",
 	{
-		s("%", fmt("<% {} %>", { i(1) })),
-		s("=", fmt("<%= {} %>", { i(1) })),
-		s("fc", fmt(functionComponent, { i(1, "componentName"), rep(1) })),
-		s("forHX", fmt(forHX, { i(1, "item"), i(2, "items"), i(3) })),
-		s("h", fmt(sigilH, { i(1) })),
-		s("m", fmt(map, { i(1), rep(1) })),
-		s("ins", fmt(inspector, { i(1), rep(1) })),
-		s("he", fmt(handleEvent, { i(1, "eventName") })),
-		s("ev", fmt(handleEvent, { i(1, "eventName") })),
-		s("hePushPatch", fmt(handleEventPushPatch, { i(1, "route") })),
-		s("hp", fmt(hpFn, { i(1) })),
-		s("ifElement", fmt(ifElement, { i(1, "div"), i(2), i(3), rep(1) })),
-		s("liHX", fmt(liHX, { i(1), i(2) })),
-		s("linkNavigateHX", fmt(linkNavigate, { i(1), i(2) })),
-		s("linkPatchHX", fmt(hxLinkPatch, { i(1), i(2) })),
-		s("lv", fmt(liveView, { i(1, "AppName"), i(2, "Module"), rep(1), rep(1), rep(2) })),
-		s("liveComponent", fmt(liveComponentHX, { i(1), i(2) })),
-		-- s("liveComponent", fmt("<.live_component module={{{}}} id=":unique_id" />", {i(1)}))),
-		s("pre", fmt(preHX, { i(1) })),
-		s("list", fmt(list, { i(1, "items") })),
-		s("slot", t("<%= render_slot(@inner_block) %>")),
+		s("lv:handle_event", fmt(handleEvent, { i(1, "eventName") })),
+		s("lv:handle_params", fmt(hpFn, { i(1) })),
+		s("insl", fmt([[IO.inspect({}, label: "{}")]], { i(1), rep(1) })),
+		s("ins", fmt([[IO.inspect({}, label: "{}")]], { i(1), rep(1) })),
+		s("hx:ul-li-loop", fmt(list, { i(1, "items") })),
+		s("lv:module", fmt(liveView, { i(1, "AppName"), i(2, "Module"), rep(1), rep(1), rep(2) })),
+		s("hx:map", fmt(map, { i(1), rep(1) })),
+		s("fmt5", fmta("foo() { return <>; }", i(1, "x"))),
+		-- s("flop", fmt(flop, { i(1, "schema"), rep(1), i(3) }), { delimiters = "%%" }),
+		s("flop:context", fmt(flop, { i(1, "schema"), rep(1), rep(1), rep(1), rep(1), rep(1) })),
+		s("flop:schema", fmt(flopSchema, {})),
+
+		-- HEEX Templates
+		s("hx:%", fmt("<% {} %>", { i(1) })),
+		s("hx:=", fmt("<%= {} %>", { i(1) })),
+		s("hx:a:navigate", fmt(linkNavigate, { i(1), i(2) })),
+		s("hx:a:patch", fmt(hxLinkPatch, { i(1), i(2) })),
+		s("hx:component", fmt(functionComponent, { i(1, "componentName"), rep(1) })),
+		s("hx:def_comp", fmt(hxComponent, { i(1), i(2) })),
+		s("hx:element:li", fmt(liHX, { i(1), i(2) })),
+		s("hx:element:pre", fmt(preHX, { i(1) })),
+		s("hx:else", fmt(elseHeex, { i(1, "else block") })),
+		s("hx:for", fmt(forHX, { i(1, "item"), i(2, "items"), i(3) })),
+		s("hx:if", fmt(ifHeex, { i(1, "condition") })),
+		s("hx:ifElement", fmt(ifElement, { i(1, "div"), i(2), i(3), rep(1) })),
+		s("hx:inspect", fmt(inspect, {})),
+		s("hx:live_component", fmt(liveComponentHX, { i(1), i(2) })),
+		s("hx:push_patch", fmt(handleEventPushPatch, { i(1, "route") })),
+		s("hx:render_slot", t("<%= render_slot(@inner_block) %>")),
+		s("hx:~", fmt(sigilH, { i(1) })),
 	}
 	-- https://medium.com/scoro-engineering/5-smart-mini-snippets-for-making-text-editing-more-fun-in-neovim-b55ffb96325a
 	-- { type = "autosnippets" }

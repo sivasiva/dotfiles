@@ -17,14 +17,28 @@ return {
         sources = {
           explorer = {
             include = {
-              ".mise*",
+              "*mise*",
               -- ".mise.toml",
               ".github",
-              ".config",
-              ".env*",
+              "*config*",
+              "*env*",
               -- ".env.example",
               ".gitignore",
-              ".tmuxp.yml",
+              "*tmuxp*",
+              -- ".tmuxp.yml",
+              -- ".tmux.conf",
+              ".zshrc",
+              "*local*",
+              "deps",
+              ".formatter.exs",
+              -- `git-crypt`ed files
+              ".vault*",
+              ".gitattributes",
+              "tmp",
+              ".keep",
+              ".github",
+              "_build",
+              ".iex.exs",
             },
             exclude = {
               ".idea",

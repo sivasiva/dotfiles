@@ -3,3 +3,5 @@
 -- Add any additional options here
 vim.opt.background = "dark"
 vim.opt.relativenumber = false
+
+vim.g.lazyvim_mini_snippets_in_completion = true

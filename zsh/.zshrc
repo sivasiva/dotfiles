@@ -55,7 +55,7 @@ alias lsd='ls -aFhlG'
 alias n="npm"
 alias soz="source ~/.zshrc"
 alias t="tmux"
-alias tkill="tmux kill-server"
+alias tkill="tmux kill-session -t "
 alias tks="tmux kill-server"
 alias tls="t ls"
 alias tmux="tmux -2" # Fix Tmux colors
@@ -189,3 +189,6 @@ export DEFAULT_VAULT_PASSWORD_FILE=~/.vault-pass
 
 # export PATH=$HOME/.local/share/mise/installs/erlang/27.2/erts-14.2.5.4/bin:$PATH
 # export PATH=$HOME/.local/share/mise/installs/elixir/1.18.2-otp-27/bin:$PATH
+
+
+export DOCKER_DEFAULT_PLATFORM=linux/arm64

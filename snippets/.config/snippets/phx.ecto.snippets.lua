@@ -11,20 +11,43 @@ local extras = require("luasnip.extras")
 -- local t = ls.text_node
 -- local c = ls.choice_node
 
-vim.keymap.set({ "i", "s" }, "<A-k>", function()
-	if ls.expand_or_jumpable() then
-		ls.expand_or_jump()
-	end
-end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<A-j>", function()
-	if ls.jumpable(-1) then
-		ls.jump(-1)
-	end
-end, { silent = true })
+local ectoSchemaCreatedBy = [[
+    field :created_by, :id
+    field :updated_by, :id
+
+    # change_set 
+    # institution
+    #|> cast(attrs, [:name, :description, :icon_file])
+    #|> validate_required([:name])
+    #|> put_change(:created_by, user_scope.user.id)
+    #|> put_change(:updated_by, user_scope.user.id)
+]]
+
+-- vim.keymap.set({ "i", "s" }, "<A-k>", function()
+-- 	if ls.expand_or_jumpable() then
+-- 		ls.expand_or_jump()
+-- 	end
+-- end, { silent = true })
+-- vim.keymap.set({ "i", "s" }, "<A-j>", function()
+-- 	if ls.jumpable(-1) then
+-- 		ls.jump(-1)
+-- 	end
+-- end, { silent = true })
 
 ls.add_snippets("elixir", {
-	s("ecto first", fmt(" {} = {} |> first() |> Repo.one()", { i(1, "record"), i(2, "Model") })),
-	s("ecto last", fmt("{} = {} |> last() |> Repo.one()", { i(1, "record"), i(2, "Model") })),
+	s("ec:first", fmt(" {} = {} |> first() |> Repo.one()", { i(1, "record"), i(2, "Model") })),
+	s("ec:last", fmt("{} = {} |> last() |> Repo.one()", { i(1, "record"), i(2, "Model") })),
+	s(
+		"ec:mig:created_by",
+		fmt(
+			[[
+        add :created_by, references(:users, type: :uuid), null: true
+        add :updated_by, references(:users, type: :uuid), null: true
+      ]],
+			{}
+		)
+	),
+	s("ec:schema:created_by", fmt(ectoSchemaCreatedBy, {})),
 	-- s("gen", fmt(genTmpl, { i(1, "GenServerName") })),
 	-- s("cron", fmt(cronTmpl, { i(1, "MyApp.Scheduler"), rep(1) })),
 	-- s("comm", fmt(commTmpl, { i(1), i(2) })),

@@ -1,30 +1,88 @@
 return {
-  {
-    "rafamadriz/friendly-snippets",
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-
-      -- -------------------------------------------------
-      -- IMPORTANT !!! luasnip does not work with symlinks.
-      -- So `stow snippets` wont work. Just directly link to the dotter path, as here
-      -- -------------------------------------------------
-      require("luasnip.loaders.from_lua").load({
-        paths = { "~/.config/snippets/" },
-      })
-    end,
-  },
-  {
-    "saghen/blink.cmp",
-    version = "*",
-    -- !Important! Make sure you're using the latest release of LuaSnip
-    -- `main` does not work at the moment
-    dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
-    opts = {
-      snippets = { preset = "luasnip" },
-      -- ensure you have the `snippets` source (enabled by default)
-      sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
-      },
-    },
-  },
+  -- NOTE: We are using `mini.snippets.extra` from LazyVim.
+  -- It includes `rafamadriz/friendly-snippets`, so not additional config needed.
+  -- mini.snippets expects snippets to be at `~/.config/nvim/snippets`.
+  --
+  -- {
+  --   "saghen/blink.cmp",
+  --   version = "*",
+  --   -- !Important! Make sure you're using the latest release of LuaSnip
+  --   -- `main` does not work at the moment
+  --   opts = function(_, opts)
+  --     -- Return early
+  --     if include_in_completion then
+  --       opts.snippets = { preset = "mini_snippets" }
+  --       return
+  --     end
+  --
+  --     -- Standalone --
+  --     local blink = require("blink.cmp")
+  --     expand_select_override = function(snippets, insert)
+  --       -- Schedule, otherwise blink's virtual text is not removed on vim.ui.select
+  --       blink.cancel()
+  --       vim.schedule(function()
+  --         MiniSnippets.default_select(snippets, insert)
+  --       end)
+  --     end
+  --     --
+  --     -- Blink performs a require on blink.cmp.sources.snippets.default
+  --     -- By removing the source, that default engine will not be used
+  --     opts.sources.default = vim.tbl_filter(function(source)
+  --       return source ~= "snippets"
+  --     end, opts.sources.default)
+  --     opts.snippets = { -- need to repeat blink's preset here
+  --       expand = function(snippet)
+  --         expand_from_lsp(snippet)
+  --         blink.resubscribe()
+  --       end,
+  --       active = function()
+  --         return MiniSnippets.session.get(false) ~= nil
+  --       end,
+  --       jump = function(direction)
+  --         jump(direction == -1 and "prev" or "next")
+  --       end,
+  --     }
+  --   end,
+  -- },
+  -- {
+  --   "rafamadriz/friendly-snippets",
+  --   config = function()
+  --     require("luasnip.loaders.from_vscode").lazy_load()
+  --
+  --     local ls = require("luasnip")
+  --     -- local types = require("luasnip.util.types")
+  --
+  --     -- -------------------------------------------------
+  --     -- IMPORTANT !!! luasnip does not work with symlinks.
+  --     -- So `stow snippets` wont work. Just directly link to the dotter path, as here
+  --     -- -------------------------------------------------
+  --     require("luasnip.loaders.from_lua").load({
+  --       paths = { "~/.config/snippets/" },
+  --     })
+  --
+  --     -- Adapted from: https://github.com/jackfranklin/dotfiles
+  --     -- If we are in a TS file, make all JS snippets available too.
+  --     ls.filetype_extend("javascriptreact", { "javascript", "html" })
+  --     ls.filetype_extend("typescript", { "javascript", "html" })
+  --     ls.filetype_extend("typescriptreact", { "typescript", "javascript", "html" })
+  --     -- If we are in a Svelte file, enable JS snippets
+  --     ls.filetype_extend("svelte", { "javascript", "html" })
+  --
+  --     ls.filetype_extend("heex", { "elixir" })
+  --   end,
+  -- },
+  -- {
+  --   "saghen/blink.cmp",
+  --   version = "*",
+  --   -- !Important! Make sure you're using the latest release of LuaSnip
+  --   -- `main` does not work at the moment
+  --   dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
+  --   opts = {
+  --     snippets = { preset = "luasnip" },
+  --     -- ensure you have the `snippets` source (enabled by default)
+  --     sources = {
+  --       default = { "lsp", "path", "snippets", "buffer" },
+  --     },
+  --   },
+  -- },
 }
