@@ -39,6 +39,7 @@ return {
               ".github",
               "_build",
               ".iex.exs",
+              "*tmux*",
             },
             exclude = {
               ".idea",

@@ -1,17 +1,5 @@
--- REF: https://github.com/mireq/luasnip-snippets/blob/main/lua/luasnip_snippets/c.lua
-local ls = require("luasnip")
--- local c = ls.choice_node
-local s = ls.snippet
-local t = ls.text_node
-local i = ls.insert_node
-local d = ls.dynamic_node
-local fmt = require("luasnip.extras.fmt").fmt
-local extras = require("luasnip.extras")
-local l = extras.lambda
-local rep = extras.rep
-
 local agentTmpl = [[
-defmodule {} do
+defmodule ${1:Name} do
   use Agent
 
   def start_link(initial_value) do
@@ -29,7 +17,7 @@ end
 ]]
 
 local genTmpl = [[
-defmodule {} do
+defmodule ${1:GenServerName} do
   use GenServer
 
   # Callbacks
@@ -56,11 +44,11 @@ end
 
 local cronTmpl = [[
 # https://stackoverflow.com/a/32097971
-defmodule {} do
+defmodule ${1:} do
   use GenServer
 
   def start_link(_opts) do
-    GenServer.start_link(__MODULE__, %{{}})
+    GenServer.start_link(__MODULE__, %{$2})
   end
 
   def init(state) do
@@ -82,20 +70,14 @@ end
 
 ~S"""
 children = [
-  {}
+ # $3 
 ]
 
 Supervisor.start_link(children, strategy: :one_for_one)
 """
 ]]
-
-local stringInterpolator = [[
-#{{{}}}
-]]
-
-ls.add_snippets("elixir", {
-	s("#", fmt(stringInterpolator, { i(1) })),
-	s("ag", fmt(agentTmpl, { i(1, "AgentName") })),
-	s("gen", fmt(genTmpl, { i(1, "GenServerName") })),
-	s("cron", fmt(cronTmpl, { i(1, "MyApp.Scheduler"), rep(1) })),
-})
+return {
+  { prefix = "otp:agent", body = agentTmpl, description = "Agent Template" },
+  { prefix = "otp:genServer", body = genTmpl, description = "GenServer" },
+  { prefix = "otp:cron", body = cronTmpl, description = "cron GenServer" },
+}
