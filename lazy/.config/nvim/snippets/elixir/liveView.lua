@@ -7,7 +7,7 @@ local liveViewRoutes = [[
 ]]
 
 local lvRoutesv1_8 = [[
-  live "/${1:toys}", ${2:Toys}Live.Index, :index
+  live "/${1:toys", ${2:Toys}Live.Index, :index
   live "/$1/new", $2Live.Form, :new
   live "/$1/:id", $2Live.Show, :show
   live "/$1/:id/edit", $2Live.Form, :edit

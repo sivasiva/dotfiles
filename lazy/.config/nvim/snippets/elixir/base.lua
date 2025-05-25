@@ -13,7 +13,7 @@ local heexSigil = [[
 ]]
 
 local inspector = [[
-  IO.inspect($1, label: ">>>>>>>>>>>>>>>>> R2")
+  IO.inspect($1, label: ">>>>>>>>>>>>>>>>> ${2:$1}")
 ]]
 
 return {
