@@ -13,24 +13,7 @@ local lvRoutesv1_8 = [[
   live "/$1/:id/edit", $2Live.Form, :edit
 ]]
 
-local flop = [[
-  case Flop.validate_and_run(${1:Service}, params, for: $1) do
-    {:ok, { ${2:services}, meta} ->
-      %{$2: $2, meta: meta}
-
-    {:error, meta} ->
-      %{$2: [], meta: meta}
-  end
-]]
-
-local flopSchema = [[
-  @derive {
-    Flop.Schema,
-    filterable: [:name], sortable: [:name], default_limit: 5
-  }
-]]
-
-local liveViewController = [[
+local lvModule = [[
   defmodule ${1:AppWeb}.${2:Toys}Live do
     use $1, :live_view
 
@@ -76,7 +59,7 @@ local liveViewController = [[
   end
 ]]
 
-local handleEvent = [[
+local lvHandleEvent = [[
 def handle_event("$1", payload, socket) do
   # socket = update(socket, :item, $($1 + 1))
   socket = assign(socket, key: "value")
@@ -85,7 +68,7 @@ def handle_event("$1", payload, socket) do
 end
 ]]
 
-local handleEventPushPatch = [[
+local lvHandleEventPushPatch = [[
 def handle_event("select-per-page", %{"per-page" => per_page }, socket) do
  params = %{socket.assigns.options | per_page: per_page }
   socket = push_patch(socket, to: ~p"/$1?#{params}")
@@ -94,7 +77,7 @@ def handle_event("select-per-page", %{"per-page" => per_page }, socket) do
 end
 ]]
 
-local hpFn = [[
+local lvHandleParams = [[
 def handle_params(_params, _uri, socket) do
 $1
 {:noreply, socket}
@@ -102,15 +85,12 @@ end
 ]]
 
 return {
-  { prefix = "flop:schema", body = flopSchema, description = "Flop schema" },
-  { prefix = "flop:setup", body = flop, description = "Flop setup" },
-
-  { prefix = "lv:controller", body = liveViewController, description = "LiveView controller" },
+  { prefix = "lv:module", body = lvModule, description = "LiveView controller" },
   { prefix = "lv:router:v1.8", body = lvRoutesv1_8, description = "LiveView routes Phoenix v1.8" },
   -- { prefix = "lv:router:v1.7", body = liveViewRoutes, description = "LiveView routes Phoenix v1.7" },
 
   -- Events
-  { prefix = "lv:handleEvent", body = handleEvent, description = "handle_event" },
-  { prefix = "lv:handleParams", body = hpFn, description = "handle_params fn" },
-  { prefix = "lv:handlePush", body = handleEventPushPatch, description = "handle_event push_patch" },
+  { prefix = "lv:handleEvent", body = lvHandleEvent, description = "handle_event" },
+  { prefix = "lv:handleParams", body = lvHandleParams, description = "handle_params fn" },
+  { prefix = "lv:handlePush", body = lvHandleEventPushPatch, description = "handle_event push_patch" },
 }

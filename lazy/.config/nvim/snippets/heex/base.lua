@@ -67,6 +67,16 @@ local hxNamedSlot = [[
   </$1>
 ]]
 
+local hxIcon = [[
+  <span class="text-${1:blue}-400">
+    <AppWeb.UX.Icons.${2:info} />
+  </span>
+]]
+
+local htmlClass = [[
+class="$1"
+]]
+
 return {
   -- Debugging
   { prefix = "hx:pre", body = hxPre, description = "HEEX <pre>" },
@@ -86,4 +96,6 @@ return {
   { prefix = "hx:list", body = hxUlList, description = "HEEX ul > li" },
   { prefix = "=", body = hxBlock, description = "<%= %> Block" },
   { prefix = "hx:slot:default", body = hxDefaultSlot, description = "{ render_slot(@inner_block) }" },
+  { prefix = "hx:icon", body = hxIcon, description = "Lucide icon in a span" },
+  { prefix = "cl", body = htmlClass, description = "element classes" },
 }
