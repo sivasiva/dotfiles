@@ -41,6 +41,8 @@ return {
               ".iex.exs",
               "*tmux*",
               "*markdown*", -- Markdown Lint config like ~/.mdlrc
+              "*yarnrc*",
+              "*prettier*",
             },
             exclude = {
               ".idea",
