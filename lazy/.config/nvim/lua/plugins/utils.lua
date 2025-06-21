@@ -56,9 +56,9 @@ return {
       })
     end,
   },
-  {
-    "chrisgrieser/nvim-origami",
-    event = "VeryLazy",
-    opts = {}, -- needed even when using default config
-  },
+  -- {
+  --   "chrisgrieser/nvim-origami",
+  --   event = "VeryLazy",
+  --   opts = {}, -- needed even when using default config
+  -- },
 }

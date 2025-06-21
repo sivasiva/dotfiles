@@ -43,6 +43,10 @@ return {
               "*markdown*", -- Markdown Lint config like ~/.mdlrc
               "*yarnrc*",
               "*prettier*",
+              ".babelrc",
+              "webapp",
+              "build",
+              ".temp",
             },
             exclude = {
               ".idea",

@@ -21,4 +21,5 @@ return {
   { prefix = "h", body = heexSigil, description = "HEEX block" },
   { prefix = "hx", body = heexSigil, description = "HEEX block" },
   { prefix = "inspect", body = inspector, description = "HEEX IO.inspect block" },
+  { prefix = "sleep", body = ":timer.sleep(3000)", description = "sleep for n ms" },
 }
