@@ -10,6 +10,7 @@ python = "3.13.0"
 elixir = "1.18.2-otp-27"
 erlang = "27.3"
 watchexec = "latest"
+java = "openjdk-21"
 
 [settings]
 experimental = true

@@ -192,3 +192,11 @@ export DEFAULT_VAULT_PASSWORD_FILE=~/.vault-pass
 
 
 export DOCKER_DEFAULT_PLATFORM=linux/arm64
+
+# Add `rg` aliases instead of config in `ripgreprc`
+# https://github.com/BurntSushi/ripgrep/issues/118#issuecomment-250026433
+alias rgex="rg --type-add 'ex:*.{ex,heex,exs}*'"
+alias rgts="rg --type-add 'ts:*.{ts,tsx,html,js,jsx}*'"
+alias rgrb="rg --type-add 'rb:*.{rb,erb,html}*'"
+alias mxc=mix compile --warnings-as-errors
+alias ie=iex -S mix phx.server

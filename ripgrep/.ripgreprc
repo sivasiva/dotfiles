@@ -15,6 +15,9 @@ web:*.{html,css,js}*
 --glob=!.cache/*
 --glob=!vendor/*
 
+# Elixir / Phoenix build directory
+--glob=!_build/*
+
 # Set the colors.
 --colors=line:fg:yellow 
 --colors=line:style:bold

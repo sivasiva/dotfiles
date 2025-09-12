@@ -45,8 +45,13 @@ return {
               "*prettier*",
               ".babelrc",
               "webapp",
+              "rx",
+              "assets",
+              "dist",
               "build",
               ".temp",
+              ".rgignore",
+              ".ripgreprc",
             },
             exclude = {
               ".idea",

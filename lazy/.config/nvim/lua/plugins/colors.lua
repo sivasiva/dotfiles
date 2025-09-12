@@ -1,5 +1,13 @@
 -- REF: https://github.com/johnsci911/nvim-ide
 return {
+  -- { "nvim-mini/mini.statusline", version = false },
+  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "catppuccin",
+  --   },
+  -- },
   {
     "brenoprata10/nvim-highlight-colors",
     event = { "VeryLazy" },
@@ -51,5 +59,22 @@ return {
       "RainbowDelimQuoted",
       "RainbowMultiDelim",
     },
+  },
+  {
+    "eero-lehtinen/oklch-color-picker.nvim",
+    event = "VeryLazy",
+    version = "*",
+    keys = {
+      -- One handed keymap recommended, you will be using the mouse
+      {
+        "<leader>v",
+        function()
+          require("oklch-color-picker").pick_under_cursor()
+        end,
+        desc = "Color pick under cursor",
+      },
+    },
+    ---@type oklch.Opts
+    opts = {},
   },
 }

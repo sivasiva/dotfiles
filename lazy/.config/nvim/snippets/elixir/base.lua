@@ -16,8 +16,15 @@ local inspector = [[
   IO.inspect($1, label: ">>>>>>>>>>>>>>>>> ${2:$1}")
 ]]
 
+local comm = [[
+# -------------------------------------------------
+# $1
+# -------------------------------------------------
+]]
+
 return {
   { prefix = "csv", body = csvConfig, desc = "NimbleCSV config" },
+  { prefix = "comm", body = comm, desc = "comment" },
   { prefix = "h", body = heexSigil, description = "HEEX block" },
   { prefix = "hx", body = heexSigil, description = "HEEX block" },
   { prefix = "inspect", body = inspector, description = "HEEX IO.inspect block" },
