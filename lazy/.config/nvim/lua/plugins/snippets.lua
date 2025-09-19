@@ -2,7 +2,7 @@
 
 return {
   {
-    "echasnovski/mini.snippets",
+    "nvim-mini/mini.snippets",
     opts = function()
       local make_stop = function()
         local au_opts = { pattern = "*:n", once = true }

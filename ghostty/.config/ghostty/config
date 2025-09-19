@@ -1,7 +1,24 @@
 
 copy-on-select = clipboard
-font-family = "JetBrains Mono Nerd Font"
-font-size = 14
+# font-family = Agave Nerd Font Mono
+# font-size = 19 
+
+# font-family = JetBrainsMonoNL Nerd Font Mono
+# font-size = 14
+
+font-family = CaskaydiaCove Nerd Font Mono
+font-size = 15
+
+# font-family = CodeNewRoman Nerd Font Mono
+# font-size = 15
+
+# font-family = FiraMono Nerd Font Mono
+# font-size = 15
+
+# OK fonts
+# font-family = FiraMono Nerd Font Mono
+# font-family = BlexMono Nerd Font Mono
+# font-size = 15
 font-thicken = true
 mouse-hide-while-typing = true
 scrollback-limit = 1000000

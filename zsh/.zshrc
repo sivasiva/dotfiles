@@ -200,3 +200,4 @@ alias rgts="rg --type-add 'ts:*.{ts,tsx,html,js,jsx}*'"
 alias rgrb="rg --type-add 'rb:*.{rb,erb,html}*'"
 alias mxc=mix compile --warnings-as-errors
 alias ie=iex -S mix phx.server
+alias gofont="ghostty +list-fonts | rg Nerd"

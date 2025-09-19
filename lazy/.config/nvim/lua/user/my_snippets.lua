@@ -5,7 +5,7 @@ local log = [[
   ]]
 
 local consoleGroup = [[
-console.group("------------ $1")
+console.group("== $1")
 console.log($2)
 console.groupEnd()
 ]]
