@@ -1,5 +1,5 @@
 [tools]
-neovim = "0.11.2"
+neovim = "0.11.4"
 node = "22"
 pnpm = "latest"
 deno = "latest"
@@ -11,6 +11,7 @@ elixir = "1.18.2-otp-27"
 erlang = "27.3"
 watchexec = "latest"
 java = "openjdk-21"
+yarn = "4.9.4"
 
 [settings]
 experimental = true
